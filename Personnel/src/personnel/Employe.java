@@ -27,12 +27,12 @@ public class Employe implements Serializable, Comparable<Employe>
 		this.prenom = prenom;
 		this.password = password;
 		this.mail = mail;
-		this.ligue = ligue;			
+		this.ligue = ligue;
+		this.dateArrive = dateArrive;
+		this.dateDepart = dateDepart;	
 		if (dateArrive == null || dateDepart.isBefore(dateArrive)){
 			throw new Erreurdate();
 		}
-		this.dateArrive = dateArrive;
-		this.dateDepart = dateDepart;
 	}
 	
 	/**
@@ -182,7 +182,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	@Override
 	public String toString()
 	{
-		String res = nom + " " + prenom + " " + mail + " (";
+		String res = nom + " " + prenom + " " + mail + " " + dateArrive + " " + dateDepart + " " + " (";
 		if (estRoot())
 			res += "super-utilisateur";
 		else
