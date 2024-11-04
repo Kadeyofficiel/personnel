@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 import personnel.*;
 
-class testLigue {
+class testDeLigue {
     GestionPersonnel gestionPersonnel = GestionPersonnel.getGestionPersonnel();
     
     @Test
@@ -27,7 +27,7 @@ class testLigue {
     }
     
     @Test 
-    void Suppression() throws SauvegardeImpossible, Erreurdate {
+    void Supprimer() throws SauvegardeImpossible, Erreurdate {
 
         // Création d'une ligue et ajouts employés pour test la suppression 
 
@@ -36,7 +36,6 @@ class testLigue {
 
         employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.of(2023, 1, 1), LocalDate.of(2023, 12, 31));
         Employe employe1 = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.of(2023, 1, 1), LocalDate.of(2023, 12, 31)); 
-        Employe employe2 = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.of(2023, 1, 1), LocalDate.of(2023, 12, 31)); 
         
         // Suppression Employé et vérif si il a bien été supprimer
 
@@ -50,7 +49,7 @@ class testLigue {
     }
     
     @Test
-    void changementetSuppAdmin() throws SauvegardeImpossible, Erreurdate {
+    void changerEtSuppAdmin() throws SauvegardeImpossible, Erreurdate {
 
         // Création d'une ligue et d'un employé 
 
@@ -115,7 +114,7 @@ class testLigue {
 
 //Test validité des dates
 
-class DateValidationTests {
+class testDesDates {
 
     @Test
     void testDateArriveNonNull() throws SauvegardeImpossible {
@@ -129,7 +128,7 @@ class DateValidationTests {
 
     @Test
     void testDepartNonNull() throws SauvegardeImpossible, Erreurdate {
-        Ligue ligue = gestionPersonnel.addLigue("Volley");
+        Ligue ligue = gestionPersonnel.addLigue("Football");
         
         Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.of(2023, 1, 1), null);
         assertEquals(LocalDate.of(2023, 1, 1), employe.getDateArrive());
@@ -138,7 +137,7 @@ class DateValidationTests {
 
     @Test
     void testDepartAvantArrive() throws SauvegardeImpossible {
-        Ligue ligue = gestionPersonnel.addLigue("Volley");
+        Ligue ligue = gestionPersonnel.addLigue("Football");
         
         Exception exception = assertThrows(Erreurdate.class, () -> {
             ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.of(2023, 1, 1), LocalDate.of(2022, 12, 31));
