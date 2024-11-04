@@ -1,7 +1,7 @@
 package personnel;
 
+import java.time.LocalDate;	
 import java.io.Serializable;
-import java.time.LocalDate;
 
 /**
  * Employé d'une ligue hébergée par la M2L. Certains peuvent 
@@ -17,11 +17,10 @@ public class Employe implements Serializable, Comparable<Employe>
 	private String nom, prenom, password, mail;
 	private Ligue ligue;
 	private GestionPersonnel gestionPersonnel;
+    private LocalDate dateDepart;
 	private LocalDate dateArrive;
-	private LocalDate dateDepart;
 	
 	Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password, LocalDate dateArrive, LocalDate dateDepart)
-	throws Erreurdate
 	{
 		this.gestionPersonnel = gestionPersonnel;
 		this.nom = nom;
@@ -29,13 +28,10 @@ public class Employe implements Serializable, Comparable<Employe>
 		this.password = password;
 		this.mail = mail;
 		this.ligue = ligue;
-		this.dateArrive = dateArrive;
-		this.dateDepart = dateDepart;	
-
-		if (dateArrive == null || dateDepart == null || dateDepart.isBefore(dateArrive) ) {
-            throw new Erreurdate();
-        }
+        this.dateArrive = dateArrive;
+        this.dateDepart = dateDepart;       
 	}
+	
 	/**
 	 * Retourne vrai ssi l'employé est administrateur de la ligue 
 	 * passée en paramètre.
@@ -87,7 +83,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	
 	public String getPrenom()
 	{
-		return this.prenom;
+		return prenom;
 	}
 	
 	/**
@@ -107,7 +103,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	
 	public String getMail()
 	{
-		return this.mail;
+		return mail;
 	}
 	
 	/**
@@ -119,64 +115,13 @@ public class Employe implements Serializable, Comparable<Employe>
 	{
 		this.mail = mail;
 	}
-	/**
-	 * Retourne la date d'arrivée de l'employé.
-	 * @return la date d'arrivée de l'employé.
-	 */
-	
-	public LocalDate getDateArrivee()
-	{
-		return this.dateArrive;
-	}
-	
-	/**
-	 * Retourne la date d'arrivée de l'employé.
-	 * @return la date d'arrivée de l'employé.
-	 */
-	
-	 public void setDateArrivee(LocalDate dateArrive)
-	 throws Erreurdate
-	 {
-		 if (dateArrive == null  || dateDepart.isBefore(dateArrive)) {
-	            throw new Erreurdate();
-	        }
-		 else {
-		 
-		this.dateArrive = dateArrive;}
-	 }
-
-	 /**
-	 * Modifie la date de départ de l'employé.
-	 * @return la date de départ de l'employé.
-	 */
-	
-	public LocalDate getDateDepart()
-	{
-		return this.dateDepart;
-	}
-	
-	/**
-	 * Modifie la date de départ de l'employé.
-	 * @return la date de départ de l'employé.
-	 */
-	
-	 public void setDateDepart(LocalDate dateDepart)
-	 throws Erreurdate
-	 {
-		 if (dateDepart == null || dateDepart.isBefore(dateArrive)) {
-	            throw new Erreurdate();
-	        }
-		 else {
-		this.dateDepart = dateDepart;}
-	 }
-	
 
 	/**
 	 * Retourne vrai ssi le password passé en paramètre est bien celui
 	 * de l'employé.
 	 * @return vrai ssi le password passé en paramètre est bien celui
 	 * de l'employé.
-	 * @param password le password auquel comparer celui de l'employé.
+	 * @param password le pas	sword auquel comparer celui de l'employé.
 	 */
 	
 	public boolean checkPassword(String password)
@@ -203,6 +148,9 @@ public class Employe implements Serializable, Comparable<Employe>
 	{
 		return this.ligue;
 	}
+
+
+
 
 	/**
 	 * Supprime l'employé. Si celui-ci est un administrateur, le root
