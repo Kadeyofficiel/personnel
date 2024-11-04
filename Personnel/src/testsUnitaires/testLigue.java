@@ -51,3 +51,13 @@ class testLigue
 		ligue.setAdministrateur(employe);
 		assertEquals("root", employe.getNom());
 	}
+
+	@Test 
+	void setAdmin()
+	{
+		Ligue ligue = new Ligue("Fléchettes");
+		Employe admin = ligue.addEmploye("test", "test", "mail@gmail.com", "asert"); 
+		ligue.setAdministrateur(admin);
+		assertEquals(admin, ligue.getAdministrateur());
+	}
+	
