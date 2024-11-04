@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 import personnel.*;
 
+
 class testDeLigue {
     GestionPersonnel gestionPersonnel = GestionPersonnel.getGestionPersonnel();
     
@@ -49,7 +50,7 @@ class testDeLigue {
     }
     
     @Test
-    void changerEtSuppAdmin() throws SauvegardeImpossible, Erreurdate {
+    void changerEtSupprimerAdmin() throws SauvegardeImpossible, Erreurdate {
 
         // Création d'une ligue et d'un employé 
 
@@ -112,7 +113,7 @@ class testDeLigue {
 }
 
 
-//Test validité des dates
+//Test validité des dates.
 
 class testDesDates {
 
