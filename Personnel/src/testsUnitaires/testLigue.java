@@ -52,6 +52,9 @@ class testLigue
 		assertEquals("root", employe.getNom());
 	}
 
+
+	//Nouveaux ajouts 04/11 !!
+
 	@Test 
 	void setAdmin()
 	{
@@ -60,4 +63,24 @@ class testLigue
 		ligue.setAdministrateur(admin);
 		assertEquals(admin, ligue.getAdministrateur());
 	}
+
+	@Test
+	void getLigue() throws SauvegardeImpossible
+	{
+		Ligue ligue = gestionPersonnel.addLigue("Fléchettes");
 	
+	}
+
+
+	//test pour date null
+	  @Test
+    void testDateArriveNull() throws SauvegardeImpossible{
+    	Ligue ligue = gestionPersonnel.addLigue("Football");
+    	
+    
+     Exception exception1 = assertThrows(Erreurdate.class, () -> {
+            ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty"  , null , LocalDate.of(2023, 1, 1));
+        });
+        assertEquals("La date de départ ne peut pas être avant la date d'arrivée.", exception1.getMessage());
+        
+     }
