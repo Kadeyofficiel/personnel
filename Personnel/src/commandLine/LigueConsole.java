@@ -138,7 +138,7 @@ public class LigueConsole
 
 		private List<Employe> GererEmployeBis(final Ligue ligue)
 	{
-		return new List<Employe>("Gérer un employé", "x", 
+		return new List<Employe>("Gérer un employé", "x",
 				() -> new ArrayList<>(ligue.getEmployes()),
 				(element) -> GererEmployeBis(element)
 				);
@@ -155,26 +155,10 @@ public class LigueConsole
 		return menu;
 	}
 
-	private List<Employe> supprimerEmploye(final Ligue ligue)
-	{
-		return new List<>("Supprimer un employé", "s", 
-				() -> new ArrayList<>(ligue.getEmployes()),
-				(index, element) -> {element.remove();}
-				);
-	}
-	
 	private List<Employe> changerAdministrateur(final Ligue ligue)
 	{
 		return null;
 	}		
-
-	private List<Employe> modifierEmploye(final Ligue ligue)
-	{
-		return new List<>("Modifier un employé", "e", 
-				() -> new ArrayList<>(ligue.getEmployes()),
-				employeConsole.editerEmploye()
-				);
-	}
 	
 	private Option supprimer(Ligue ligue)
 	{
